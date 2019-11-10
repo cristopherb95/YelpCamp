@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/register", (req, res) => {
-    res.render("register");
+    res.render("register", {page: 'register'}); 
 });
 
 router.post("/register", (req, res) => {
@@ -16,6 +16,7 @@ router.post("/register", (req, res) => {
     User.register(newUser, req.body.password, (err, user) => {
         if(err) {
             console.log(err);
+            // Route fix
             req.flash('error', err.message);
             return res.redirect("/register");
         }
@@ -27,7 +28,7 @@ router.post("/register", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-    res.render("login");
+    res.render("login", {page: 'login'});
 });
 
 router.post("/login", passport.authenticate("local", {
