@@ -22,7 +22,8 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
                           price: req.body.price, 
                           image: req.body.image, description: 
                           req.body.description, 
-                          author: author 
+                          author: author,
+                          amenities: req.body.amenities 
                         };
     // Create new campground, save in DB
     Campground.create(newCampground, (err, newlyCreated) => {
