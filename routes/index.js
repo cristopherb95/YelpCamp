@@ -20,7 +20,9 @@ router.post("/register", (req, res) => {
         email: req.body.email,
         avatar: req.body.avatar
     });
-
+    if (req.body.adminCode === 'ilikehamburgers') {
+        newUser.isAdmin = true;
+    }
     User.register(newUser, req.body.password, (err, user) => {
         if(err) {
             console.log(err);
