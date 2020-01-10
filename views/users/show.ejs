@@ -6,6 +6,9 @@
             <h1><%= user.firstName + " " + user.lastName %></h1>
             <img src="<%= user.avatar %>" alt="user profile image" width="200px">
             <div class="caption"><a href="mailto:<%= user.email %>">Send mail to user</a></div>
+            <% if (currentUser && currentUser._id.equals(user._id)) { %>
+            <div><a href="/users/<%= user._id %>/edit" class="caption">Edit User</a></div>
+            <% } %>
         </div>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus orci vel nunc fermentum, eget euismod purus ullamcorper. In hac habitasse platea dictumst. Etiam aliquam consequat ex sit amet vehicula. Donec eleifend dapibus metus, in rutrum sem rutrum congue. In sed odio felis. Pellentesque eu enim mattis elit rutrum mollis. Mauris enim erat, auctor eget iaculis vitae, gravida eu nisi. Duis finibus lacinia tortor. 
     </div>

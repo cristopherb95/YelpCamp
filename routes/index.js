@@ -70,5 +70,31 @@ router.get("/users/:id", (req, res) => {
     })
 })
 
+router.get("/users/:id/edit", (req, res) => {
+    User.findById(req.params.id, (err, foundUser) => {
+        if (err)
+            return res.redirect("/campgrounds");
+        else {
+            if (foundUser._id.equals(req.user._id)) {
+               return res.render("users/edit", { user: foundUser });
+            }
+            else {
+                req.flash('error', 'You don\'t have permission to do that');
+                res.redirect("back");
+            }
+        }
+    });
+});
+
+router.put("/users/:id",  (req, res) => {
+    console.log('inside');
+    User.findByIdAndUpdate(req.params.id, req.body.user, (err, foundUser) => {
+        if (err)
+            res.redirect("back");
+        else {
+            res.redirect("/users/" + req.params.id);
+        }
+    });
+});
 
 module.exports = router;
