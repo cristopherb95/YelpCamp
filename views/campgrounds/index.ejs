@@ -7,6 +7,14 @@
     <p>View our hand-picked campgrounds from all over the world</p>
     <p>
         <a href="/campgrounds/new" class="btn btn-primary btn-lg">Add New Campground</a>
+
+        <form action="/campgrounds" method="GET" class="form-inline">
+            <div class="form-group">   
+                <input type="text" name="search" placeholder="Search campground..."  class="form-control">
+                <input type="submit" value="Search" class="btn btn-default">
+            </div>
+        </form>
+
         <!-- Testing purpose only -->
         <% if(currentUser && currentUser.isAdmin) {%>
         <div>You are an admin!</div>
@@ -15,6 +23,12 @@
 </header>
 
 <div class="row text-center" style="display: flex; flex-wrap: wrap">
+    <% if(noMatch !== null) { %>
+    <div class="col-md-12">
+        <h3><%= noMatch %></h3>
+    </div>
+    <% } %>
+
     <% campgrounds.forEach( (campground) => { %>
     <div class="col-md-3 col-sm-6">
         <div class="thumbnail">
