@@ -15,7 +15,8 @@ var express     = require("express"),
 //requring routes
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
-    indexRoutes      = require("./routes/index")
+    indexRoutes      = require("./routes/index"),
+    userRoutes      = require("./routes/users")
     
 mongoose.connect(process.env.DATABASEURL, { 
     useNewUrlParser: true, 
@@ -54,6 +55,7 @@ app.use(function(req, res, next){
 });
 
 app.use("/", indexRoutes);
+app.use("/users", userRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 

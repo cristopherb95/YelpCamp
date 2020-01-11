@@ -13,3 +13,34 @@
 .delete-form {
     display: inline;
 }
+
+.fade {
+    opacity: 1;
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+}
+
+.fade:hover {
+        transition-duration: 500ms;
+        transition-timing-function: ease-out;
+        opacity: 0.7;
+}
+
+.imageGray {
+    -webkit-filter: grayscale(80%);
+       -moz-filter: grayscale(80%);
+         -o-filter: grayscale(80%);
+        -ms-filter: grayscale(80%);
+            filter: grayscale(80%); 
+}
+
+.ulTwoCols {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+.justifyText {
+    text-align: justify; 
+    text-justify: inter-word;
+}
